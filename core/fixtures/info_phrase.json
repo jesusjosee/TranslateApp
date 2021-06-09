@@ -1,0 +1,57 @@
+[
+{
+  "model": "core.phrase",
+  "pk": 1,
+  "fields": {
+    "spanish_phrase": "saltar",
+    "english_phrase": "jump",
+    "learned": false,
+    "created": "2021-06-08T14:32:19.543Z",
+    "updated": "2021-06-09T02:16:39.753Z"
+  }
+},
+{
+  "model": "core.phrase",
+  "pk": 2,
+  "fields": {
+    "spanish_phrase": "A pesar de",
+    "english_phrase": "despite",
+    "learned": true,
+    "created": "2021-06-08T14:33:49.877Z",
+    "updated": "2021-06-09T02:15:28.981Z"
+  }
+},
+{
+  "model": "core.phrase",
+  "pk": 3,
+  "fields": {
+    "spanish_phrase": "correr",
+    "english_phrase": "run",
+    "learned": true,
+    "created": "2021-06-08T17:48:00.334Z",
+    "updated": "2021-06-08T23:49:20.264Z"
+  }
+},
+{
+  "model": "core.phrase",
+  "pk": 4,
+  "fields": {
+    "spanish_phrase": "ver",
+    "english_phrase": null,
+    "learned": true,
+    "created": "2021-06-08T17:51:36.420Z",
+    "updated": "2021-06-08T23:33:14.181Z"
+  }
+},
+{
+  "model": "core.phrase",
+  "pk": 5,
+  "fields": {
+    "spanish_phrase": "puedo",
+    "english_phrase": "I can",
+    "learned": true,
+    "created": "2021-06-08T21:50:32.078Z",
+    "updated": "2021-06-09T06:45:33.741Z"
+  }
+}
+]
