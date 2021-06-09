@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Phrases No Learned
+{% endblock title %}
+
+
+{% block content %}
+  
+
+        
+        <!-- start main -->
+        <div class=" blog ">
+            <!-- start main -->
+            <div class="list ">
+  
+            <!-- start Primera entrada -->
+                <div class="card my-3 shadow">
+                    <div class="card-body ">
+                        <a class="float-right btn btn-outline-warning" href="{% url 'list_nolearned' %}">spanish version</a>
+                        <h1 class=" text-danger "> Phrases No Learned</h1>
+                        <hr>
+
+                        <ol>
+                            {% for p in phrase_list %}
+                            <li > 
+                                <a href="{% url 'detail_phrase' p.id %}"> {{p.english_phrase}}</a>
+                            
+                            </li> 
+                            {% endfor %}
+                        </ol>
+                     
+                    </div>
+                </div>
+            <!-- end Primera entrada -->
+  
+  
+            </div>               
+  
+            <!-- start sidebar -->
+                <!-- start entradas -->
+                <div class="sidebar my-3">
+                   {% include 'core/includes/sidebar.html' %}
+  
+                    
+                </div>
+                <!-- end sidebar -->
+  
+            </div>
+        <!-- end main -->
+      
+        
+{% endblock content %}
+    
+
+{% block js %}
+
+{% endblock js %}
+    

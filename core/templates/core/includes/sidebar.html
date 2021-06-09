@@ -1,0 +1,15 @@
+<div class="card shadow d-flex flex-column ">
+    <div class=" titulo-sidebar d-flex justify-content-center" >
+        <h4 class="">Sidebar</h4>
+    </div >
+    <div class="font-weight-light">
+        <a class="etiquetas cuerpo link" href="{% url 'home' %}">Lista de todas las frases aprendidas </a>
+        <a class="etiquetas cuerpo link" href="{% url 'list_learned' %}">Lista de frases aprendidas </a>
+        <a class="etiquetas cuerpo link" href="{% url 'list_nolearned' %}">Lista de frases No aprendidas </a>
+
+        <a class="etiquetas cuerpo link" href="{% url 'add' %}">Agregar Frase </a>
+        <a class="etiquetas cuerpo link" href="{% url 'list_learned_english' %}">List phrases learned english </a>
+        <a class="etiquetas cuerpo link" href="{% url 'list_nolearned_english' %}">List phrases no learned english </a>
+
+    </div>
+</div>
