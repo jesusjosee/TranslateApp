@@ -18,14 +18,30 @@ from django.contrib import messages
 # Create your views here.
 
 
-class PhraseListView(ListView):
+class PhraseListSpanishView(ListView):
     model = Phrase
-    template_name = "core/list_english_phrase.html"
+    template_name = "core/list_all_spanish_phrase.html"
+    paginate_by = 10
 
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        queryset = Phrase.objects.search_spanish(palabra_clave)
+        return queryset
+
+class PhraseListEnglishView(ListView):
+    model = Phrase
+    template_name = "core/list_all_english_phrase.html"
+    paginate_by = 10
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        queryset = Phrase.objects.search_english(palabra_clave)
+        return queryset
 
 class PhraseDetailView(DetailView):
     model = Phrase
     template_name = "core/detail_phrase.html"
+       
     
 class AddPhraseCreateView( PermissionRequiredMixin,SuccessMessageMixin , CreateView):
     """ Para añadir un mensaje se utiliza el SuccesssMessageMixin y el atributo success_messages """
@@ -88,6 +104,16 @@ class NoLearnedEnglishListView(PermissionRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = Phrase.objects.nolearned_phrase_english()
+        return queryset
+
+class NoEditListView(PermissionRequiredMixin, ListView):
+    permission_required = 'core.view_phrase'
+    model = Phrase
+    template_name = "core/no_edit.html"
+
+    def get_queryset(self):
+        queryset = Phrase.objects.no_edit()
+        print(queryset)
         return queryset
 
 def registration(request):

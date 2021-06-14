@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Modificar Frase
+    Eliminar Frase
 {% endblock title %}
 
 
@@ -12,12 +12,11 @@
         <br><br>
         <div class="card">
                     <div class="card-body">
-                        <h1>Modificar Frase</h1>
-                        <hr>
                         <form action="" method="post">
                             {% csrf_token %}
-                            {{form | crispy }}
-                            <input class="btn btn-primary" type="submit" value="Modificar">
+                            <p> Estas seguro que deseas eliminar el dialogo : <strong> "{{dialogue }}"</strong> </p>
+                            <input class="btn btn-danger" type="submit" value="Sí, Eliminar">
+                            <a class="btn btn-outline-info" href="{% url 'detail_dialogue' dialogue.id %}"> No, cancelar</a>
                         </form>
                     </div>
                 </div>        
@@ -29,11 +28,3 @@
 {% endblock content %}
     
 
-{% block js %}
-<script>
-    function show_phrase(){
-        document.getElementById('show_phrase').style.display = "block"
-    }
-</script>
-{% endblock js %}
-    

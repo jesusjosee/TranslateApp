@@ -13,9 +13,27 @@
         <div class=" blog ">
             <!-- start list phrases -->
             <div class="list ">
+                
   
                 <div class="card my-3 shadow">
+                   
                     <div class="card-body ">
+                       
+                        <form method="GET">
+                            {% csrf_token %}
+                            <div class="form-row align-items-center">
+                              <div class="col-auto">
+                                <input type="text" class="form-control mb-2" name="kword" id="kword" placeholder="Busca una frase">
+                              </div>
+                              
+                              <div class="col-auto">
+                                <button type="submit" class="btn btn-info mb-2">Buscar</button>
+                              </div>
+                            </div>
+                          </form>
+                        
+                        <a class="float-right btn btn-outline-warning" href="{% url 'all_english_phrase' %}">english version</a>
+                        
                         <h1 class=" text-warning ">Lista de Todas las Frases</h1>
 
                         <ol>
@@ -27,6 +45,8 @@
                             {% endfor %}
                         </ol>
                      
+                        
+                        {% include 'core/includes/paginator.html' %}
                     </div>
                 </div>
             <!-- end list phrases -->
@@ -43,7 +63,7 @@
                 </div>
                 <!-- end sidebar -->
   
-            </div>
+        </div>
         <!-- end main -->
       
         

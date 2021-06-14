@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Todas las Frases
+{% endblock title %}
+
+
+{% block content %}
+  
+
+        
+        <!-- start main -->
+        <div class=" blog ">
+            <!-- start list phrases -->
+            <div class="list ">
+  
+                <div class="card my-3 shadow">
+                    <div class="card-body ">
+                        <form method="GET">
+                            {% csrf_token %}
+                            <div class="form-row align-items-center">
+                              <div class="col-auto">
+                                <input type="text" class="form-control mb-2" name="kword" id="kword" placeholder="Search a phrase">
+                              </div>
+                              
+                              <div class="col-auto">
+                                <button type="submit" class="btn btn-info mb-2">Search</button>
+                              </div>
+                            </div>
+                          </form>
+
+                        <a class="float-right btn btn-outline-warning" href="{% url 'home' %}">spanish version</a>
+                        <h1 class=" text-warning ">List all phrases</h1>
+
+                        <ol>
+                            {% for p in phrase_list %}
+                            <li > 
+                                <a href="{% url 'detail_phrase' p.id %}"> {{p.english_phrase}}</a>
+                            
+                            </li> 
+                            {% endfor %}
+                        </ol>
+                     
+                        {% include 'core/includes/paginator.html' %}
+                     
+                    </div>
+                </div>
+            <!-- end list phrases -->
+  
+  
+            </div>               
+  
+            <!-- start sidebar -->
+                <!-- start entradas -->
+                <div class="sidebar my-3">
+                    {% include 'core/includes/sidebar.html' %}
+
+                    
+                </div>
+                <!-- end sidebar -->
+  
+            </div>
+        <!-- end main -->
+      
+        
+{% endblock content %}
+    
+
+{% block js %}
+
+{% endblock js %}
+    

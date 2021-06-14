@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Todos los dialogos
+{% endblock title %}
+
+
+{% block content %}
+  
+
+        
+        <!-- start main -->
+        <div class=" blog ">
+            <!-- start list phrases -->
+            <div class="list ">
+  
+                <div class="card my-3 shadow">
+                    <div class="card-body ">
+                        <h1 class=" text-warning ">Lista de Todos los dialogos </h1>
+
+                        <ol>
+                            {% for d in dialogue_list %}
+                            <li > 
+                                <a href="{% url 'detail_dialogue' d.id %}"> {{d.spanish_dialogue}}</a>
+                            
+                            </li> 
+                            {% endfor %}
+                        </ol>
+                     
+                    </div>
+                </div>
+            <!-- end list phrases -->
+  
+  
+            </div>               
+  
+            <!-- start sidebar -->
+                <!-- start entradas -->
+                <div class="sidebar my-3">
+                    {% include 'core/includes/sidebar.html' %}
+
+                    
+                </div>
+                <!-- end sidebar -->
+  
+            </div>
+        <!-- end main -->
+      
+        
+{% endblock content %}
+    
+
+{% block js %}
+
+{% endblock js %}
+    

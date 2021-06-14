@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Modificar Frase
+    Añadir nuevo Dialogo
 {% endblock title %}
 
 
@@ -11,13 +11,13 @@
     <div class="col-sm-12 col-md-6 offset-md-3">
         <br><br>
         <div class="card">
-                    <div class="card-body">
-                        <h1>Modificar Frase</h1>
+            <div class="card-body">
+                        <h1>Agregar un nuevo dialogo</h1>
                         <hr>
                         <form action="" method="post">
                             {% csrf_token %}
                             {{form | crispy }}
-                            <input class="btn btn-primary" type="submit" value="Modificar">
+                            <input class="btn btn-primary" type="submit" value="Guardar">
                         </form>
                     </div>
                 </div>        
