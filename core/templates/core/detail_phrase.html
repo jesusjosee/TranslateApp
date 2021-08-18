@@ -17,8 +17,8 @@
                         <h3 >{{phrase.spanish_phrase}}</h3>
                         <br>
                         <button onclick="show_phrase()" class="btn btn-success">Mostrar</button>
-                        <a class="btn btn-outline-warning ml-2" href="{% url 'update' phrase.id %}">Modificar</a>
-                        <a class="btn btn-danger ml-2" href="{% url 'delete' phrase.id %}">Eliminar</a>
+                        <a class="btn btn-outline-warning ml-2" href="{% url 'update' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}">Modificar</a>
+                        <a class="btn btn-danger ml-2" href="{% url 'delete' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}">Eliminar</a>
 
                         <!-- show phrase -->
                         <br><br>

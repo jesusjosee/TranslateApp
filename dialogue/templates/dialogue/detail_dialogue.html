@@ -17,8 +17,8 @@
                         <h3 >{{dialogue.spanish_dialogue}}</h3>
                         <br>
                         <button onclick="show_phrase()" class="btn btn-success">Mostrar</button>
-                        <a class="btn btn-outline-warning ml-2" href="{% url 'update_dialogue' dialogue.id %}">Modificar</a>
-                        <a class="btn btn-danger ml-2" href="{% url 'delete_dialogue' dialogue.id %}">Eliminar</a>
+                        <a class="btn btn-outline-warning ml-2" href="{% url 'update_dialogue' dialogue.publish.year dialogue.publish.month dialogue.publish.day dialogue.pk dialogue.slug %}">Modificar</a>
+                        <a class="btn btn-danger ml-2" href="{% url 'delete_dialogue'  dialogue.publish.year dialogue.publish.month dialogue.publish.day dialogue.pk dialogue.slug %}">Eliminar</a>
 
                         <!-- show phrase -->
                         <br><br>

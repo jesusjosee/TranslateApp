@@ -26,6 +26,7 @@ class PhraseManager(models.Manager):
         resultado = self.filter(spanish_phrase__icontains=kword)
         return resultado
 
+
     def search_english(self, kword):
         resultado = self.filter(english_phrase__icontains=kword)
         return resultado

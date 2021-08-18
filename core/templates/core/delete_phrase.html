@@ -16,7 +16,7 @@
                             {% csrf_token %}
                             <p> Estas seguro que deseas eliminar la frase : <strong> "{{phrase }}"</strong> </p>
                             <input class="btn btn-danger" type="submit" value="Sí, Eliminar">
-                            <a class="btn btn-outline-info" href="{% url 'detail_phrase' phrase.id %}"> No, cancelar</a>
+                            <a class="btn btn-outline-info" href="{% url 'detail_phrase' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}"> No, cancelar</a>
                         </form>
                     </div>
                 </div>        

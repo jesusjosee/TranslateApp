@@ -23,7 +23,7 @@
                         <ol>
                             {% for p in phrase_list %}
                             <li > 
-                                <a href="{% url 'detail_phrase' p.id %}"> {{p.spanish_phrase}}</a>
+                                <a href="{{p.get_absolute_url}}"> {{p.spanish_phrase}}</a>
                                 <p>{{p.english_phrase}}</p>
                             
                             </li> 

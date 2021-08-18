@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Phrases No Learned
+{% endblock title %}
+
+
+{% block content %}
+  
+      
+    <p>
+        {{user}}
+    </p>
+  <p>
+      {% for p in user.user_phrase.all %}
+        {{p}}
+      {% endfor %}
+  </p>
+
+    <!-- <p>
+       {{phrase.created_by}}
+    </p>
+    <p>
+        {{phrase.spanish_phrase}}
+    </p>
+    <p>
+        {{phrase.english_phrase}}
+    </p> -->
+    <p>
+        {% for p in request.user.user_phrase.all %}
+            {{p}}
+        {% endfor %}
+    </p>
+    
+    <hr>
+            
+      
+        
+{% endblock content %}
+    
+
+{% block js %}
+
+{% endblock js %}
+    

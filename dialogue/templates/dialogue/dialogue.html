@@ -21,7 +21,7 @@
                         <ol>
                             {% for d in dialogue_list %}
                             <li > 
-                                <a href="{% url 'detail_dialogue' d.id %}"> {{d.spanish_dialogue}}</a>
+                                <a href="{{ d.get_absolute_url }}"> {{d.spanish_dialogue}}</a>
                             
                             </li> 
                             {% endfor %}

@@ -16,7 +16,7 @@
                             {% csrf_token %}
                             <p> Estas seguro que deseas eliminar el dialogo : <strong> "{{dialogue }}"</strong> </p>
                             <input class="btn btn-danger" type="submit" value="Sí, Eliminar">
-                            <a class="btn btn-outline-info" href="{% url 'detail_dialogue' dialogue.id %}"> No, cancelar</a>
+                            <a class="btn btn-outline-info" href="{% url 'detail_dialogue' dialogue.publish.year dialogue.publish.month dialogue.publish.day dialogue.pk dialogue.slug %}"> No, cancelar</a>
                         </form>
                     </div>
                 </div>        

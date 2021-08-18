@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,11 +42,6 @@ INSTALLED_APPS = [
     'dialogue.apps.DialogueConfig',
     'crispy_forms',
 ]
-
-CRISPY_TEMPLATE_PACK =  'bootstrap4'
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,3 +127,32 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Antiguas configuraciones cuando no tenia la app registration
+#CRISPY_TEMPLATE_PACK =  'bootstrap4'
+#MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+#LOGIN_REDIRECT_URL = '/'
+#LOGOUT_REDIRECT_URL = '/'
+
+
+#media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#redirecciones
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+#framework mensajeria
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+#python backend with email
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'registration.authentication.EmailAuthBackend',
+]

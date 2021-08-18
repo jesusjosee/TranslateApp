@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}  Sesión cerrada   {% endblock title %}
+
+
+{% block content %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="column-sm-12 col-md-6 offset-md-3">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h1>Sesión cerrada</h1><hr>
+                        <p>
+                            Has cerrado sesion satisfactoriamente. Puedes volver a iniciar sesion 
+                            <a class="text-success" href="{% url 'login' %}">aquí</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

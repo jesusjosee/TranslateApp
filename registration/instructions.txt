@@ -1,0 +1,96 @@
+1. Instalar las aplicaciones del requirements.txt
+
+2. Añade la app registration en INSTALLED_APPS en settings.py al inicio de todas las aplicaciones
+        INSTALLED_APPS = (
+                        'registration',
+                        ...)
+
+3. Incluye el path de las urls de autenticacion en el urls.py principal
+    #path app registration de django
+    path('accounts/',include('django.contrib.auth.urls')),
+
+4. Incluye el path de las urls de La app registration en el urls.py principal
+    #path app registration propia para manejar perfil privado
+    path('accounts/', include('registration.urls')),
+
+5. Colocar los ajustes en el settings.py de la app registration
+#media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#redirecciones
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+#framework mensajeria
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+#python backend with email
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'registration.authentication.EmailAuthBackend',
+]
+
+6. Añadir el servidor de imagenes en la urls.py principal
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+7. Colocar las urls de la app registration en el base.html
+             {% if request.user.is_authenticated %}
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                </li>
+            {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'signup' %}">Regístrate</a>
+                </li>
+            {% endif %}
+
+
+8. Installar crispy 
+            1. $ pip install django-crispy-forms
+            2. añadir INSTALLED_APPS en settings.py
+                    INSTALLED_APPS = (
+                        ...
+                        'crispy_forms',
+                    )
+            3. Añadir a settings.py 
+            CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+9. Instalar sweetalert2 al base.html
+            1. añadir el script del CDN de sweetalert2
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            2. añadir las configuraciones de mensajes de django en el base.html
+                {% if messages %}
+                    {% for m in messages %}
+                        <script>
+                                Swal.fire({
+                                "title" : "Felicitaciones",
+                                "text": "{{m}}",
+                                "icon": "success"
+                                })
+                        </script>
+                    {% endfor %}
+                {% endif %}
+
+10. Aplicar las migraciones                
+
+credentials gmail
+username : brandom.alibaba@gmail.com
+password : brandomXU2021
