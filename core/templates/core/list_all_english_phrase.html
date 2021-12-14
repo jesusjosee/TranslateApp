@@ -38,6 +38,13 @@
                                 <a href="{{ p.get_absolute_url }}"> {{p.english_phrase}}</a>
                             
                             </li> 
+                            {% empty %}
+
+                            <h5><b> No phrase has been added yet </b></h5>
+                            <p>Please 
+                                <a href="{% url 'signup' %}">Sign up</a> o 
+                                <a href="{% url 'login' %}">Log in</a>
+                                to start saving your phrases </p>
                             {% endfor %}
                         </ol>
                      
