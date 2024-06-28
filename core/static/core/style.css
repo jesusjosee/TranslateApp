@@ -16,9 +16,9 @@ body{
 
 }
 
-div ul li >a{
+/* div ul li >a{
     color: #fff !important ;
-}
+} */
 .titulo{
     
     display: flex;

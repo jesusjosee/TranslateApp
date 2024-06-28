@@ -1,36 +1,30 @@
+{% if is_paginated %}
+    <nav aria-label="...">
+        <ul class="pagination">
+            <!-- previous -->
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link text-secondary" href="?page={{ page_obj.previous_page_number }}">Atrás</a>
+            </li>
+            {% endif %}
 
-    {% if is_paginated %}
-        <nav aria-label="...">
-            <ul class="pagination">
-                <!-- previous -->
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="?page={{page_obj.has_page_number}}">Atrás</a>
+            <!-- current -->
+            {% for pagina in paginator.page_range %}
+                {% if pagina == page_obj.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="">{{ pagina }}</a>
                 </li>
+                {% else %}
+                <li><a class="page-link text-body" href="?page={{ pagina }}" aria-label="Page {{ pagina }}">{{ pagina }}</a></li>
                 {% endif %}
+            {% endfor %}
 
-                <!-- current -->
-                {% for pagina in paginator.page_range %}
-
-                    {% ifequal pagina page_obj.number %}
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="">{{pagina}}</a>
-                        </li>
-                    {% else %}
-                        <li><a class="page-link text-body" href="?page={{pagina}}" aria-label="Page 2">{{pagina}}</a></li>
-                    {% endifequal %}
-
-                {% endfor %}
-
-
-                <!-- next -->
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link text-secondary" href="?page={{page_obj.next_page_number}}" >Siguiente</a>
-                </li>
-
-                {% endif %}
-              
-            </ul>
-        </nav>
-    {% endif %}
+            <!-- next -->
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link text-secondary" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}

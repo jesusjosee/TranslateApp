@@ -4,27 +4,22 @@
     Eliminar Frase
 {% endblock title %}
 
-
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="row">
-    <div class="col-sm-12 col-md-6 offset-md-3">
-        <br><br>
-        <div class="card">
-                    <div class="card-body">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <p> Estas seguro que deseas eliminar la frase : <strong> "{{phrase }}"</strong> </p>
-                            <input class="btn btn-danger" type="submit" value="Sí, Eliminar">
-                            <a class="btn btn-outline-info" href="{% url 'detail_phrase' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}"> No, cancelar</a>
-                        </form>
-                    </div>
-                </div>        
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <p>Estás seguro que deseas eliminar la frase: <strong>"{{ phrase }}"</strong></p>
+                        <button class="btn btn-danger" type="submit">Sí, Eliminar</button>
+                        <a class="btn btn-outline-info text-decoration-none" href="{% url 'detail_phrase' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}">No, cancelar</a>
+                    </form>
+                </div>
             </div>
         </div>
-
-        
-        
+    </div>
+</div>
 {% endblock content %}
-    
-

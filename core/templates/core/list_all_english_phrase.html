@@ -1,79 +1,60 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Lista de Todas las Frases en ingles
+    Lista de Todas las Frases en inglés
 {% endblock title %}
 
-
 {% block content %}
-  
-
-        
-        <!-- start main -->
-        <div class=" blog ">
-            <!-- start list phrases -->
-            <div class="list ">
-  
-                <div class="card my-3 shadow">
-                    <div class="card-body ">
-                        <form method="GET">
-                            {% csrf_token %}
-                            <div class="form-row align-items-center">
-                              <div class="col-auto">
+    <!-- start main -->
+    <div class="blog">
+        <!-- start list phrases -->
+        <div class="list">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <form method="GET">
+                        {% csrf_token %}
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
                                 <input type="text" class="form-control mb-2" name="kword" id="kword" placeholder="Search a phrase">
-                              </div>
-                              
-                              <div class="col-auto">
-                                <button type="submit" class="btn btn-info mb-2">Search</button>
-                              </div>
                             </div>
-                          </form>
-
-                        <a class="float-right btn btn-outline-warning" href="{% url 'home' %}">spanish version</a>
-                        <h1 class=" text-warning ">List all phrases</h1>
-
-                        <ol>
-                            {% for p in phrase_list %}
-                            <li > 
-                                <a href="{{ p.get_absolute_url }}"> {{p.english_phrase}}</a>
-                            
-                            </li> 
-                            {% empty %}
-
-                            <h5><b> No phrase has been added yet </b></h5>
-                            <p>Please 
-                                <a href="{% url 'signup' %}">Sign up</a> o 
-                                <a href="{% url 'login' %}">Log in</a>
-                                to start saving your phrases </p>
-                            {% endfor %}
-                        </ol>
-                     
-                        {% include 'core/includes/paginator.html' %}
-                     
-                    </div>
-                </div>
-            <!-- end list phrases -->
-  
-  
-            </div>               
-  
-            <!-- start sidebar -->
-                <!-- start entradas -->
-                <div class="sidebar my-3">
-                    {% include 'core/includes/sidebar.html' %}
-
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-info mb-2">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <a class="float-end btn btn-outline-warning mb-3" href="{% url 'home' %}">Spanish Version</a>
+                    
+                    <h1 class="text-warning">List all phrases</h1>
+                    
+                    <ol>
+                        {% for p in phrase_list %}
+                        <li>
+                            <a href="{{ p.get_absolute_url }}">{{ p.english_phrase }}</a>
+                        </li>
+                        {% empty %}
+                        <h5><b>No phrase has been added yet</b></h5>
+                        <p>Please <a href="{% url 'signup' %}" class="text-decoration-none">Sign up</a> or <a href="{% url 'login' %}" class="text-decoration-none">Log in</a> to start saving your phrases</p>
+                        {% endfor %}
+                    </ol>
+                    
+                    {% include 'core/includes/paginator.html' %}
                     
                 </div>
-                <!-- end sidebar -->
-  
             </div>
-        <!-- end main -->
-      
+            <!-- end list phrases -->
+        </div>
         
+        <!-- start sidebar -->
+        <div class="sidebar my-3">
+            {% include 'core/includes/sidebar.html' %}
+        </div>
+        <!-- end sidebar -->
+  
+    </div>
+    <!-- end main -->
 {% endblock content %}
-    
 
 {% block js %}
 
 {% endblock js %}
-    

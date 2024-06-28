@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'dialogue.apps.DialogueConfig',
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # crispy forms
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 #redirecciones
 LOGIN_REDIRECT_URL = 'profile'

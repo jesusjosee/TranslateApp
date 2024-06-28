@@ -1,58 +1,42 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Phrases No Learned
+    Frases No Editadas
 {% endblock title %}
 
 
 {% block content %}
-  
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h1 class="text-danger">Frases no editadas</h1>
+                    <hr>
 
-        
-        <!-- start main -->
-        <div class=" blog ">
-            <!-- start main -->
-            <div class="list ">
-  
-            <!-- start Primera entrada -->
-                <div class="card my-3 shadow">
-                    <div class="card-body ">
-                        <h1 class=" text-danger "> Frases no editadas</h1>
-                        <hr>
-
-                        <ol>
-                            {% for p in phrase_list %}
-                            <li > 
-                                <a href="{{p.get_absolute_url}}"> {{p.spanish_phrase}}</a>
-                                <p>{{p.english_phrase}}</p>
-                            
-                            </li> 
-                            {% endfor %}
-                        </ol>
-                    </div>
+                    <ol>
+                        {% for p in phrase_list %}
+                        <li> 
+                            <a href="{{ p.get_absolute_url }}" class="text-decoration-none">{{ p.spanish_phrase }}</a>
+                            <p>{{ p.english_phrase }}</p>
+                        </li> 
+                        {% empty %}
+                        <p>No phrases have been added yet.</p>
+                        {% endfor %}
+                    </ol>
                 </div>
-            <!-- end Primera entrada -->
-  
-  
-            </div>               
-  
-            <!-- start sidebar -->
-                <!-- start entradas -->
-                <div class="sidebar my-3">
-                   {% include 'core/includes/sidebar.html' %}
-  
-                    
-                </div>
-                <!-- end sidebar -->
-  
             </div>
-        <!-- end main -->
-      
-        
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar my-3">
+                {% include 'core/includes/sidebar.html' %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
-    
 
 {% block js %}
 
 {% endblock js %}
-    

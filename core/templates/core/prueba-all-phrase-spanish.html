@@ -6,81 +6,51 @@
 
 
 {% block content %}
-  
-
-        
-        <!-- start main -->
-        <div class=" blog ">
-            <!-- start list phrases -->
-            <div class="list ">
-                
-  
-                <div class="card my-3 shadow">
-                   
-                    <div class="card-body ">
-                       
-                        <form method="GET">
-                            <div class="form-row align-items-center">
-                              <div class="col-auto">
-                                <input type="text" class="form-control mb-2" name="kword" id="kword" placeholder="Busca una frase">
-                              </div>
-                              
-                              <div class="col-auto">
-                                <button type="submit" class="btn btn-info mb-2">Buscar</button>
-                              </div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <form method="GET">
+                        <div class="form-row align-items-center mb-3">
+                            <div class="col-auto">
+                                <input type="text" class="form-control" name="kword" id="kword" placeholder="Busca una frase">
                             </div>
-                          </form>
-                        
-                        <a class="float-right btn btn-outline-warning" href="{% url 'all_english_phrase' %}">english version</a>
-                        
-                        <h1 class=" text-warning ">Lista de Todas las Frases</h1>
-                        <!-- <ol>
-                            {{  request.user }}
-                            {% for p in user.user_phrase.all %}
-                            <li > 
-                                <a href="{% url 'detail_phrase' p.id %}"> {{p.spanish_phrase}}</a>
-                            
-                            </li> 
-                            {% endfor %}
-                        </ol>
-                      -->
-                      <ol>
-                        {{  request.user }}
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-info">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <a class="float-right btn btn-outline-warning mb-3" href="{% url 'all_english_phrase' %}">english version</a>
                     
+                    <h1 class="text-warning">Lista de Todas las Frases</h1>
+                    <hr>
+
+                    <ol>
                         {% for p in phrase_list %}
-                        <li > 
-                            <a href="{% url 'detail_phrase' p.id %}"> {{p.spanish_phrase}}</a>
-                        
+                        <li> 
+                            <a href="{% url 'detail_phrase' p.id %}" class="text-decoration-none">{{ p.spanish_phrase }}</a>
                         </li> 
+                        {% empty %}
+                        <p>No hay frases disponibles.</p>
                         {% endfor %}
                     </ol>
-                 
-                        
-                        {% include 'core/includes/paginator.html' %}
-                    </div>
-                </div>
-            <!-- end list phrases -->
-  
-  
-            </div>               
-  
-            <!-- start sidebar -->
-                <!-- start entradas -->
-                <div class="sidebar my-3">
-                    {% include 'core/includes/sidebar.html' %}
 
-                    
+                    {% include 'core/includes/paginator.html' %}
                 </div>
-                <!-- end sidebar -->
-  
+            </div>
         </div>
-        <!-- end main -->
-      
-        
+
+        <div class="col-lg-4">
+            <div class="sidebar my-3">
+                {% include 'core/includes/sidebar.html' %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
-    
 
 {% block js %}
 
 {% endblock js %}
-    

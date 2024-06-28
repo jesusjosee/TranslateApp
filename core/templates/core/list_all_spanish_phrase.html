@@ -4,80 +4,56 @@
     TranslateApp
 {% endblock title %}
 
-
 {% block content %}
-  
-
-        
-        <!-- start main -->
-        <div class=" blog ">
-            <!-- start list phrases -->
-            <div class="list ">
-                
-  
-                <div class="card my-3 shadow">
-                   
-                    <div class="card-body ">
-                       
-                        <form method="GET">
-                            {% csrf_token %}
-                            <div class="form-row align-items-center">
-                              <div class="col-auto">
+    <!-- start main -->
+    <div class="blog">
+        <!-- start list phrases -->
+        <div class="list">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <form method="GET">
+                        {% csrf_token %}
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
                                 <input type="text" class="form-control mb-2" name="kword" id="kword" placeholder="Busca una frase">
-                              </div>
-                              
-                              <div class="col-auto">
-                                <button type="submit" class="btn btn-info mb-2">Buscar</button>
-                              </div>
                             </div>
-                          </form>
-                        
-                        <a class="float-right btn btn-outline-warning" href="{% url 'all_english_phrase' %}">english version</a>
-                        
-                        <h1 class=" text-warning ">Lista de Todas las Frases</h1>
-
-                        <ol>
-                            {% for p in phrase_list %}
-                            <li > 
-                                <a href="{{p.get_absolute_url}}"> {{p.spanish_phrase}}</a>
-                            
-                            </li> 
-                            {% empty %}
-
-                            <h5><b> Todavia no tienes ninguna frase añadida </b></h5>
-                            <p>Porfavor 
-                                <a href="{% url 'signup' %}">registrate</a> o 
-                                <a href="{% url 'login' %}">inica sesión</a>
-                                para que empieces a guardar tus frases </p>
-                            {% endfor %}
-                        </ol>
-                     
-                        
-                        {% include 'core/includes/paginator.html' %}
-                    </div>
-                </div>
-            <!-- end list phrases -->
-  
-  
-            </div>               
-  
-            <!-- start sidebar -->
-                <!-- start entradas -->
-                <div class="sidebar my-3">
-                    {% include 'core/includes/sidebar.html' %}
-
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-info mb-2">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
                     
+                    <a class="float-end btn btn-outline-warning mb-3" href="{% url 'all_english_phrase' %}">English Version</a>
+                    
+                    <h1 class="text-warning">Lista de Todas las Frases</h1>
+                    
+                    <ol>
+                        {% for p in phrase_list %}
+                        <li>
+                            <a href="{{ p.get_absolute_url }}">{{ p.spanish_phrase }}</a>
+                        </li>
+                        {% empty %}
+                        <h5><b>Todavía no tienes ninguna frase añadida</b></h5>
+                        <p>Por favor <a href="{% url 'signup' %}" class="text-decoration-none">regístrate</a> o <a href="{% url 'login' %}" class="text-decoration-none">inicia sesión</a> para que empieces a guardar tus frases</p>
+                        {% endfor %}
+                    </ol>
+                    
+                    {% include 'core/includes/paginator.html' %}
                 </div>
-                <!-- end sidebar -->
-  
+            </div>
+            <!-- end list phrases -->
         </div>
-        <!-- end main -->
-      
-        
+
+        <!-- start sidebar -->
+        <div class="sidebar my-3">
+            {% include 'core/includes/sidebar.html' %}
+        </div>
+        <!-- end sidebar -->
+
+    </div>
+    <!-- end main -->
 {% endblock content %}
-    
 
 {% block js %}
 
 {% endblock js %}
-    

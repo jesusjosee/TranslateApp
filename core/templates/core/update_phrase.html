@@ -7,33 +7,29 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="row">
-    <div class="col-sm-12 col-md-6 offset-md-3">
-        <br><br>
-        <div class="card">
-                    <div class="card-body">
-                        <h1>Modificar Frase</h1>
-                        <hr>
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{form | crispy }}
-                            <input class="btn btn-primary" type="submit" value="Modificar">
-                        </form>
-                    </div>
-                </div>        
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="mb-4">Modificar Frase</h1>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-primary" type="submit">Modificar</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        
-        
+    </div>
+</div>
 {% endblock content %}
-    
 
 {% block js %}
 <script>
-    function show_phrase(){
-        document.getElementById('show_phrase').style.display = "block"
+    function show_phrase() {
+        document.getElementById('show_phrase').style.display = "block";
     }
 </script>
 {% endblock js %}
-    
