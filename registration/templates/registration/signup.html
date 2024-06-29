@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base-home.html' %}
 {% load crispy_forms_tags %}
 {% block title %}  Regístrate  {% endblock title %}
 
@@ -12,8 +12,8 @@
                         <form action="" method="post">{% csrf_token %}
 
                             {{form | crispy }}
-                            <a href="{% url 'home' %}">Ir al Home</a> |
-                            <a href="{% url 'login' %}">Iniciar Sesión</a>
+                            <a href="{% url 'home' %}" class="fw-bold">Ir al Inicio</a> |
+                            <a href="{% url 'login' %}" class="fw-bold">Iniciar Sesión</a>
                             <p class="d-flex justify-content-end mt-3">
                                 <input type="submit" value="Ingresar" class="btn btn-success ">
                             </p>

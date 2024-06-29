@@ -5,7 +5,7 @@
     
     {% if request.user.is_authenticated %}
     <div class="font-weight-light">
-        <a class="etiquetas cuerpo link text-decoration-none" href="{% url 'home' %}">Lista de todas las frases</a>
+        <a class="etiquetas cuerpo link text-decoration-none" href="{% url 'dashboard' %}">Lista de todas las frases</a>
         <a class="etiquetas cuerpo link text-decoration-none" href="{% url 'list_learned' %}">Lista de frases aprendidas</a>
         <a class="etiquetas cuerpo link text-decoration-none" href="{% url 'list_nolearned' %}">Lista de frases No aprendidas</a>
 

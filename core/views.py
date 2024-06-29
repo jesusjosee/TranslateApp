@@ -62,7 +62,7 @@ class AddPhraseCreateView( LoginRequiredMixin,SuccessMessageMixin , CreateView):
     login_url = '/login/'
     form_class = PhraseForm
     template_name = "core/add_phrase.html"
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
     success_message = 'Frase añadida correctamente'
     #redirect_field_name = 'redirect_to'
 
@@ -91,7 +91,7 @@ class DeletePhraseView(LoginRequiredMixin, DeleteView):
     login_url = '/login/'
     model = Phrase
     template_name = "core/delete_phrase.html"
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
 
     def get(self, request, *args, **kwargs):
         get_object_or_404(Phrase, pk=kwargs['pk'], created_by=self.request.user)

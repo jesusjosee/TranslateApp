@@ -24,7 +24,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">TranslateApp</a>
+            <a class="navbar-brand" href="{% url 'dashboard' %}">TranslateApp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
                             Todas las Frases
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="{% url 'home' %}">Todas las Frases en español</a></li>
+                            <li><a class="dropdown-item" href="{% url 'dashboard' %}">Todas las Frases en español</a></li>
                             <li><a class="dropdown-item" href="{% url 'all_english_phrase' %}">List all phrases in
                                     English</a></li>
                         </ul>

@@ -24,13 +24,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('core.urls') ),
+    path('',include('dashboard.urls') ),
+    path('dashboard/',include('core.urls') ),
     path('',include('dialogue.urls') ),
     #path('accounts/', include('django.contrib.auth.urls')),
     
     #path app registration de django
     path('accounts/',include('django.contrib.auth.urls')),
-    #path app registration propia para manejar perfil privado
+    #path app registration 
     path('accounts/', include('registration.urls')),
 ]
 
