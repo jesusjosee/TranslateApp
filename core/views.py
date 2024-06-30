@@ -21,20 +21,32 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib import messages
 # Create your views here.
 
-class PhraseListSpanishView(ListView):
+class PhraseListSpanishView(LoginRequiredMixin, ListView):
     model = Phrase
-    template_name = "core/list_all_spanish_phrase.html"
-    paginate_by = 10
+    template_name = "dashboard/core/dashboard_list_all_spanish_phrase.html"
+    # paginate_by = 5
+    context_object_name = 'phrase_list'  # Nombre del objeto de contexto que contiene la lista de frases
 
     def get_queryset(self):
         palabra_clave = self.request.GET.get('kword', '')
-        user=self.request.user.id
+        user = self.request.user.id
         queryset = Phrase.objects.search_spanish(palabra_clave).filter(created_by=user)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user.id
+        total_phrases = Phrase.objects.filter(created_by=user).count()
+        learned_phrases = Phrase.objects.filter(created_by=user, learned=True).count()
+        not_learned_phrases = Phrase.objects.filter(created_by=user, learned=False).count()
+        context['total_phrases'] = total_phrases
+        context['learned_phrases'] = learned_phrases
+        context['not_learned_phrases'] = not_learned_phrases
+        return context
+
 class PhraseListEnglishView(ListView):
     model = Phrase
-    template_name = "core/list_all_english_phrase.html"
+    template_name = "dashboard/core/list_all_english_phrase.html"
     paginate_by = 10
 
     def get_queryset(self):
@@ -46,7 +58,7 @@ class PhraseListEnglishView(ListView):
 class PhraseDetailView(LoginRequiredMixin, DetailView):
     login_url = '/login/'
     model = Phrase
-    template_name = "core/detail_phrase.html"
+    template_name = "dashboard/core/detail_phrase.html"
 
     # def get(self, request, *args, **kwargs):
     #     get_object_or_404(Phrase, pk=kwargs['pk'], created_by=self.request.user)
@@ -61,7 +73,7 @@ class AddPhraseCreateView( LoginRequiredMixin,SuccessMessageMixin , CreateView):
     #permission_required = 'core.add_phrase'
     login_url = '/login/'
     form_class = PhraseForm
-    template_name = "core/add_phrase.html"
+    template_name = "dashboard/core/add_phrase.html"
     success_url = reverse_lazy('dashboard')
     success_message = 'Frase añadida correctamente'
     #redirect_field_name = 'redirect_to'
@@ -76,7 +88,7 @@ class UpdatePhraseCreateView(LoginRequiredMixin, SuccessMessageMixin , UpdateVie
     permission_required = 'core.view_phrase'
     model = Phrase
     fields = ['spanish_phrase', 'english_phrase', 'learned']
-    template_name = "core/update_phrase.html"
+    template_name = "dashboard/core/update_phrase.html"
     #success_url lo esta defiiendo el modelo Phrase en models.py
     success_message = 'Frase modificada correctamente'
 
@@ -90,7 +102,7 @@ class DeletePhraseView(LoginRequiredMixin, DeleteView):
     #permission_required = 'core.view_phrase'
     login_url = '/login/'
     model = Phrase
-    template_name = "core/delete_phrase.html"
+    template_name = "dashboard/core/delete_phrase.html"
     success_url = reverse_lazy('dashboard')
 
     def get(self, request, *args, **kwargs):

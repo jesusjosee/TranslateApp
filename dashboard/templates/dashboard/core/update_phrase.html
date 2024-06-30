@@ -1,0 +1,35 @@
+{% extends 'base-dashboard.html' %}
+
+{% block title %}
+    Modificar Frase
+{% endblock title %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="mb-4">Modificar Frase</h1>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-primary" type="submit">Modificar</button>
+                        <a href="{% url 'detail_phrase' phrase.publish.year phrase.publish.month phrase.publish.day phrase.pk phrase.slug %}" class="btn btn-secondary ms-2">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+    function show_phrase() {
+        document.getElementById('show_phrase').style.display = "block";
+    }
+</script>
+{% endblock js %}

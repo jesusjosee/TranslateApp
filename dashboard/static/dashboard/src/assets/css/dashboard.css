@@ -1,0 +1,58 @@
+.custom-hover {
+    position: relative;
+    text-decoration: none;
+}
+
+.custom-hover::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #000; /* Cambia el color según tu necesidad */
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.custom-hover:hover::after {
+    width: 100%;
+    left: 0;
+    background: #000; /* Cambia el color según tu necesidad */
+}
+
+/* Aplica el color rojo al icono cuando el enlace se encuentra en hover */
+.logout-hover:hover i {
+    color: red;
+}
+
+/* Aplica un color azul agradable al icono cuando el enlace se encuentra en hover */
+.full-screen-link:hover i {
+    color: #1E90FF; /* DodgerBlue */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff0099; /* Fondo de la página activa */
+    border-color: #ff0099; /* Borde de la página activa */
+    color: white; /* Color de texto de la página activa */
+}
+
+.pagination .page-link {
+    color: #007bff; /* Color de texto de los enlaces */
+    background-color: #f8f9fa; /* Fondo de los enlaces */
+    border: 1px solid #dee2e6; /* Borde de los enlaces */
+    margin: 0 2px; /* Espaciado entre los enlaces */
+}
+
+.pagination .page-link:hover {
+    color: #0056b3; /* Color de texto de los enlaces al pasar el cursor */
+    background-color: #e9ecef; /* Fondo de los enlaces al pasar el cursor */
+    border-color: #dee2e6; /* Borde de los enlaces al pasar el cursor */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d; /* Color de texto de los enlaces desactivados */
+    background-color: #f8f9fa; /* Fondo de los enlaces desactivados */
+    border-color: #dee2e6; /* Borde de los enlaces desactivados */
+}
